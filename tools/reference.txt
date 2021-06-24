@@ -1,0 +1,6 @@
+金融数据获取专栏
+https://www.zhihu.com/column/c_1343711355866595328
+如何用 python 获取实时的股票数据?
+https://www.zhihu.com/question/438404653
+开源金融数据比较:Tushare、Akshare、baostock、理杏仁等
+https://zhuanlan.zhihu.com/p/219633414
