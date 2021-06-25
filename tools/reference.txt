@@ -1,6 +1,95 @@
-金融数据获取专栏
-https://www.zhihu.com/column/c_1343711355866595328
-如何用 python 获取实时的股票数据?
-https://www.zhihu.com/question/438404653
-开源金融数据比较:Tushare、Akshare、baostock、理杏仁等
-https://zhuanlan.zhihu.com/p/219633414
+# 金融数据获取专栏
+# https://www.zhihu.com/column/c_1343711355866595328
+# 如何用 python 获取实时的股票数据?
+# https://www.zhihu.com/question/438404653
+# 开源金融数据比较:Tushare、Akshare、baostock、理杏仁等
+# https://zhuanlan.zhihu.com/p/219633414
+# 4款开源金融数据的顺序为我接触他们的时间先后顺序排列.
+#
+# 2-1理杏仁
+# 中文网站：https://www.lixinger.com/
+#
+# 1、基本介绍
+#
+# 杏仁定位于理性投资者的数据中心,为投资者提供专业的数据提取、筛选以及可视化服务.
+#
+# 2、优势&劣势
+#
+# 用理杏仁是因为公司的一些原因.
+#
+# 理杏仁的优势：
+#
+# 1、相关的股票信息有可视化界面.
+#
+# 理杏仁的劣势：
+#
+# 1、非小白很难弄懂里面的弯弯绕绕指标图等等
+#
+# 2、部分数据暂时没有开放
+#
+# 2-2Akshare
+# GitHub主页： https://github.com/jindaxiang/akshare
+#
+# 中文文档 ：https://akshare.readthedocs.io/zh_CN/latest/
+#
+# 1、基本介绍：
+#
+# AkShare 是基于 Python 的开源金融数据接口库,目的是实现对股票、期货、期权、基金、外汇、债券、指数、数字货币等金融产品的基本面数据、实时和历史行情数据、衍生数据从数据采集、数据清洗、到数据落地的一套开源工具,满足金融数据科学家,数据科学爱好者在金融数据获取方面的需求.
+#
+# AkShare 的特点是获取的是相对权威的金融数据网站公布的原始数据,广大数据科学家可以利用原始数据进行各数据源之间的交叉验证,进而再加工,从而得出科学的结论.
+#
+# 软件作者 Albert King 致力于金融衍生品定价和价格预测、机器学习在金融领域的应用等研究.
+#
+# 2-3baostock
+# 中文文档 ：http://baostock.com/baostock/index.php/%E9%A6%96%E9%A1%B5
+#
+# 1、基本介绍
+#
+# 提供大量准确、完整的证券历史行情数据、上市公司财务数据等.
+#
+# 通过python API获取证券数据信息,满足量化交易投资者、数量金融爱好者、计量经济从业者数据需求.
+#
+# 返回的数据格式：
+#
+# pandas DataFrame类型,以便于用pandas/NumPy/Matplotlib进行数据分析和可视化.
+#
+# 同时支持通过BaoStock的数据存储功能,将数据全部保存到本地后进行分析.
+#
+# 支持语言：目前版本http://BaoStock.com目前只支持Python3.5及以上(暂不支持python 2.x).
+#
+# 2-4Tushare
+# 中文网站（老版）：http://tushare.org/
+#
+# 中文网站（新版）：https://tushare.pro/
+#
+# 1、基本介绍
+#
+# Tushare是一个免费、开源的python财经数据接口包.
+#
+# 主要实现对股票等金融数据从数据采集、清洗加工到数据存储的过程,能够为金融分析人员提供快速、整洁、和多样的便于分析的数据,为他们在数据获取方面极大地减轻工作量,使他们更加专注于策略和模型的研究与实现上.考虑到Python pandas包在金融量化分析中体现出的优势,Tushare返回的绝大部分的数据格式都是pandas DataFrame类型,非常便于用pandas/NumPy/Matplotlib进行数据分析和可视化.
+#
+# 当然,如果您习惯了用Excel或者关系型数据库做分析,您也可以通过Tushare的数据存储功能,将数据全部保存到本地后进行分析.应一些用户的请求,从0.2.5版本开始,Tushare同时兼容Python 2.x和Python 3.x,对部分代码进行了重构,并优化了一些算法,确保数据获取的高效和稳定.
+#
+# 2-5Akshare、Tushare、baostock的优劣势合集
+# 这几款开源数据在界面上很很近似,Tushare最近做了一次改版网站变得更加有逼格了.
+#
+# 目前,
+#
+# 界面最有逼格的：Tushare（pro）
+#
+# 界面最Low的：Baostock.（看着像个山寨的,如果相关的工作人员看到了还希望可以改善一下）
+#
+# 明显的劣势的话：
+#
+# 数据广度劣势：
+#
+# Akshare、baostock上缺少一些数据,Tushare上相对更加全一些.
+#
+# 付费劣势：
+#
+# 首先,我也不反对这些开源库进行收费,因为毕竟为别人知识的产出买单很正常.
+#
+# Akshare、baostock、Tushare这三款开源库中,目前Tushare-Pro版是进行收费的.
+#
+# jupyter notebook 背景颜色
+# https://www.cnblogs.com/tianqizhi/p/10612976.html

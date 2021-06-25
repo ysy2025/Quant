@@ -136,3 +136,114 @@ class TradeLoopBack(object):
                 self.trade_strategy.buy_strategy(index, day, self.trade_days)
             if hasattr(self.trade_strategy, "sell_strategy"):
                 self.trade_strategy.sell_strategy(index, day, self.trade_days)
+
+"""
+交易策略2:股价连续两个交易日下跌并且跌幅超过阈值,买入并持有s_keep_stock_threshold = 10天
+"""
+class TradeStrategy2(TradeStrategyBase):
+    """
+    交易策略2:均值回归策略,股价连续两个交易日下跌并且跌幅超过阈值,买入并持有s_keep_stock_threshold = 10天
+    """
+    # 持有天数门槛
+    s_keep_stock_threshold = 10
+    # 下跌买入阈值
+    s_buy_stock_threshold = -0.10
+    def __init__(self):
+        self.keep_stock_day = 0
+        # pass
+    def but_strategy(self, trade_index, trade_day, trade_days):
+        if self.keep_stock_day == 0 and trade_index > 1:
+            """
+            当你没有股票时,self.keep_stock_day=0,而且trade_index>1,不是交易开始的第一天,因为需要昨天的数据
+            trade_down 在trade_day.change<0才可以;判断今天估价是否下跌
+            yesterday_down,昨天是否跌
+            trade_day是交易当天
+            trade_days是交易日记录
+            trade_index是交易日index
+            """
+            today_down = trade_day.change < 0
+            yesterday_down = trade_days[trade_index-1].change<0
+            # 两天总跌幅
+            down_rate = trade_day.change + trade_days[trade_index-1].change
+            # 买入条件,跌幅超过阈值s_buy_change_threshold
+            if today_down and yesterday_down and down_rate < TradeStrategy2.s_buy_stock_threshold:
+                self.keep_stock_day += 1
+            elif self.keep_stock_day > 0:
+                self.keep_stock_day += 1
+    def sell_strategy(self, trade_index, trade_day, trade_days):
+        # 当持有天数>阈值,卖出
+        if self.keep_stock_day > TradeStrategy2.s_keep_stock_threshold:
+            self.keep_stock_day = 0
+
+    """
+    关于 classmethod staticmethod
+    python staticmethod 返回函数的静态方法
+    class C(object):
+    @staticmethod
+    def f(arg1, arg2, ...):
+        ...
+    以上实例声明了静态方法 f,从而可以实现实例化使用 C().f(),当然也可以不实例化调用该方法 C.f().
+    classmethod 修饰符对应的函数不需要实例化,不需要 self 参数,但第一个参数需要是表示自身类的 cls 参数,可以来调用类的属性,类的方法,实例化对象等
+    class A(object):
+    bar = 1
+    def func1(self):  
+        print ('foo') 
+    @classmethod
+    def func2(cls):
+        print ('func2')
+        print (cls.bar)
+        cls().func1()   # 调用 foo 方法
+    A.func2()# 不需要实例化
+    输出结果为：
+    func2
+    1
+    foo
+    """
+    @classmethod
+    def set_keep_stock_threshold(cls, keep_stock_threshold):
+        cls.s_keep_stock_threshold = keep_stock_threshold
+    @staticmethod
+    def set_buy_change_threshold(buy_change_threshold):
+        TradeStrategy2.s_buy_stock_threshold = buy_change_threshold
+
+import baostock as bs
+import pandas as pd
+from tools.StockTradeDays import *
+if __name__ == '__main__':
+    #### 登陆系统 ####
+    lg = bs.login()
+    # 显示登陆返回信息
+    print('login respond error_code:' + lg.error_code)
+    print('login respond  error_msg:' + lg.error_msg)
+
+    # 获取茅台的收盘价
+    maotai = bs.query_history_k_data_plus("sz.300750", "date,code,open,high,low,close", start_date='2018-01-01',
+                                          end_date='2021-12-31', frequency="d", adjustflag="3")
+    data_list = []
+    while (maotai.error_code == '0') & maotai.next():
+        # 获取一条记录，将记录合并在一起
+        data_list.append(maotai.get_row_data())
+    mt = pd.DataFrame(data_list, columns=maotai.fields)
+    # print(mt.head(5))
+
+    # date_array = mt["date"].to_list()
+    price_array = mt['close'].to_list()
+    # print(date_array[:10])
+    print(price_array[:10])
+    print(type(price_array))
+
+    date_base = 20180101
+    trade_days = StockTradeDays(price_array, date_base)
+    print(len(trade_days))
+    # print(trade_days)
+
+    trade_strategy1 = TradeStrategy1()
+    # TradeStrategy2.set_keep_stock_threshold(20)
+    # TradeStrategy2.set_buy_change_threshold(-0.1)
+    trade_loop_back = TradeLoopBack(trade_days, trade_strategy1)
+    trade_loop_back.execute_trade()
+    profit = 0.0 if len(trade_loop_back.profit_array) == 0 else reduce(lambda a, b: a+b, trade_loop_back.profit_array)
+    print(profit)
+
+    ts2 = TradeStrategy2
+    print(ts2)
