@@ -15,6 +15,15 @@ class PicsSpider(scrapy.Spider):
         # filename = response.url.split("/")[-2]
         # with open(filename, 'wb') as f:
         #     f.write(response.body)
+        """
+
+        :param response:
+        :return:
+        ("/html/body/div[@class='container']/div[@class='bigimg']/p/img")
+
+        xpath 解析的重要性
+        """
+
         print(response.xpath('/html/body/div/div/p/img'))
 
         item = PicsItem()
