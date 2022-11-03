@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<title>闫盼盼《纯白妖姬》写真集,第1页-拓扑美女网</title>
+	<link media="all" type="text/css" href="/css/g.css" rel="stylesheet"/>
+   <script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+function chang(t){
+	var width = $(document.body).width();
+	if(width <1200)
+	{
+		width = (width-30) / 3;
+		var height = (width-10) *3 /2;
+		$(".imga img").css("height",height+"px");		
+	}
+	else
+	{
+		if(t==1){$(".imga img").css("height","276px");}
+	}
+}
+$(function () {chang(0);gotoreader();});
+$(window).resize(function() {chang(1);});
+
+function gotoreader()
+{
+    var datas = "id=141";
+    jQuery.ajax({
+        url: '/ajax/visit.aspx', 
+        data: datas, 
+        type: 'POST',
+        beforeSend: function() {},
+        error: function(request) {},
+        success: function(data) {}
+    });
+
+}
+</script>
+</head>
+
+<body>
+
+<div class="header"><span class="home"><a href="/">首页</a></span><h1><a href="/">拓扑美女网</a></h1><span><a href="/so/">搜索</a></span></div>
+<div class="menu des">
+<h2>闫盼盼《纯白妖姬》写真集</h2>
+<p> 模特:<a href="/meinv/yanpanpan.html">闫盼盼</a> 时间:2022-07-21</p>
+<p>
+闫盼盼《纯白妖姬》写真集，共18张，大尺度白色透网内衣诱惑，希望朋友们多多支持。
+</p>
+</div>
+
+<div class="container">
+<div class="bigimg">
+<p id="p8966"><img src="//file.ctopgirl.com/pic/202207/05/baf265e2-fc83-4218-93ca-d4ed45676dae.jpg"/></p>
+<p id="p8967"><img src="//file.ctopgirl.com/pic/202207/05/accde11d-8d27-4f48-9783-bc8a62f57817.jpg"/></p>
+<p id="p8968"><img src="//file.ctopgirl.com/pic/202207/05/95fc3fd3-6852-412b-91f2-c9b6fca0e61c.jpg"/></p>
+<p id="p8969"><img src="//file.ctopgirl.com/pic/202207/05/a523059b-7d09-4d2a-9786-5596744581ec.jpg"/></p>
+<p id="p8970"><img src="//file.ctopgirl.com/pic/202207/05/1fe4ff8e-0cda-4576-88b4-fa2b11c76b01.jpg"/></p>
+
+</div>
+<div class="page"><ul><li>首 页</li><li>上一页</li><li><span>1/4</span></li><li><a href="/pic/141-2.html">下一页</a></li><li><a href="/pic/141-4.html">末 页</a></li></ul></div>
+</div>
+
+<div class="menu"><ul class="clear"><li><a href="/tag/xinggan.html">性感</a></li><li><a href="/tag/daxiong.html">大胸</a></li></ul></div>
+
+<div class="container">
+<h2><a href="javascript:void(0)">相关图片</a></h2>
+<ul class="list clear">
+<li><a href="/pic/147.html" class="imga"><img src="//file.ctopgirl.com/album/202207/05/67543f22-c6c7-4e3d-a6a0-b1f492f4877c.jpg"></a><p><a href="/pic/147.html">闫盼盼《奔放淡雅》写真集</a></p></li>
+<li><a href="/pic/144.html" class="imga"><img src="//file.ctopgirl.com/album/202207/05/9e199af4-7631-4d59-81e6-c3f21de931fd.jpg"></a><p><a href="/pic/144.html">闫盼盼《浴室红妆》写真集</a></p></li>
+<li><a href="/pic/136.html" class="imga"><img src="//file.ctopgirl.com/album/202207/05/95a31b88-c175-426d-8867-c837dc2f4545.jpg"></a><p><a href="/pic/136.html">闫盼盼《黑天鹅》写真集</a></p></li>
+<li><a href="/pic/125.html" class="imga"><img src="//file.ctopgirl.com/album/202207/04/c04e13f1-2b99-4a29-ac51-b0e6c194fe61.jpg"></a><p><a href="/pic/125.html">陈小喵合租室友主题床上性感内衣配无内肉丝裤袜诱惑写真[XiuRen秀人网]No.2876</a></p></li>
+<li><a href="/pic/457.html" class="imga"><img src="//file.ctopgirl.com/album/202209/12/fb0e8624-06d7-4041-8ed5-435c6ccb05c7.jpg"></a><p><a href="/pic/457.html">王馨瑶yanni 厦门旅拍[XiuRen秀人网] No.5074</a></p></li>
+<li><a href="/pic/480.html" class="imga"><img src="//file.ctopgirl.com/album/202209/16/13b6cbc6-3344-4600-8656-e6d786a70793.jpg"></a><p><a href="/pic/480.html">唐安琪 古装合拍[XiuRen秀人网] No.4952</a></p></li>
+
+</ul>
+</div>
+
+
+<div class="footer">
+&copy 2022 CTopgirl.com All Rights Reserved 
+</div>
+</body>
+</html>
