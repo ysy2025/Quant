@@ -1,10 +1,8 @@
 import scrapy
-# https://www.bilibili.com/video/BV1QY411F7Vt?p=2
-from pics.items import PicsItem
 
-
-class PicsSpider(scrapy.Spider):
-    name = "pics"
+from pictures.items import PicturesItem
+class PicturesSpider(scrapy.Spider):
+    name = "pictures"
     # allowed_domains = ["dmoz.org"]
     start_urls = [
         "http://www.ctopgirl.com/pic/136.html",
@@ -26,7 +24,7 @@ class PicsSpider(scrapy.Spider):
 
         print(response.xpath('/html/body/div/div/p/img'))
 
-        item = PicsItem()
+        item = PicturesItem()
         for sel in response.xpath('/html/body/div/div/p/img'):
             item['title'] = "ypp"
             item['link'] = sel.re('//.*.jpg')[0]
@@ -36,4 +34,3 @@ class PicsSpider(scrapy.Spider):
             print("===========================>\n")
 
             yield item
-

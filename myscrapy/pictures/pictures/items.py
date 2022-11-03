@@ -6,10 +6,7 @@
 import scrapy
 
 
-class PicsItem(scrapy.Item):
+class PicturesItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = scrapy.Field()
-    link = scrapy.Field()
-    desc = scrapy.Field()
-    # pass
+    pass
