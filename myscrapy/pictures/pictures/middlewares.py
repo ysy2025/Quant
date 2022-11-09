@@ -5,6 +5,10 @@
 
 from scrapy import signals
 
+import scrapy
+from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
+import random
+
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 
@@ -101,3 +105,20 @@ class PicturesDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+class MyUserAgentMiddleware(UserAgentMiddleware):
+    """
+    设置随机 user-agent
+    """
+    def __init__(self, user_agent):
+        self.user_agent = user_agent
+
+    # 这里,首先执行,获取 user_agent 列表
+    @classmethod
+    def from_crawler(cls, crawler):
+        # 读取settings里面的 my_user_agent
+        return cls(user_agent=crawler.settings.get('MY_USER_AGENT'))
+
+    def process_request(self, request, spider):
+        agent = random.choice(self.user_agent) # 列表中随机选择一个
+        request.headers['User-Agent'] = agent
