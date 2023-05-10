@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="704cb4c9-05f9-48c7-b0d2-bc27fabf17d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/pics.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/items.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pic" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/items.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/middlewares.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/pipelines.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/spiders/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/pics/spiders/pics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy/pics/scrapy.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/spiders/ImgSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/spiders/ImgSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myscrapy/pictures/pictures/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/pictures/pictures/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myscrapy/pictures/pictures/spiders/pictures.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/pictures/pictures/spiders/pictures.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +41,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="27CU340z4j0QOo7VaYZ8zDbshEv" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -65,6 +50,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
