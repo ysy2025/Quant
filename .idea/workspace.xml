@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="704cb4c9-05f9-48c7-b0d2-bc27fabf17d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/spiders/ImgSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/ImageSpider/ImgInWebsite/spiders/ImgSpider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myscrapy/pictures/pictures/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/pictures/pictures/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myscrapy/pictures/pictures/spiders/pictures.py" beforeDir="false" afterPath="$PROJECT_DIR$/myscrapy/pictures/pictures/spiders/pictures.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/MyChatBot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/urls.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/SparkApi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/SparkApi_Python.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/api.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/errorList.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo/leetcode/0002.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algo/leetcode/ListNode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLLM/MyLangChain/TestWenxin.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/TestWenxin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/leetcode/0001.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/leetcode/0001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/leetcode/Solution.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +49,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="27CU340z4j0QOo7VaYZ8zDbshEv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Learning\Git\myPython" />
@@ -177,6 +191,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

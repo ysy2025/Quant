@@ -1,0 +1,8 @@
+星火大模型
+服务接口认证信息
+APPID
+00487b4b
+APISecret
+OWM4NTc4OTg2ZTVjMzE0NmUwMmYwM2Mw
+APIKey
+b37f8c7c7cb5b797caa592c2bf0d266f
