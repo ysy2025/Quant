@@ -100,16 +100,17 @@ if __name__ == '__main__':
 
     # print(solution.findORderedBySplit([3, 12, 21, 45], 6))
 if __name__ == '__main__':
+    pass
     # nums = [2,7,11,15]
     # target = 9
     #
     # res = twoSum(nums, target)
     # print(res)
 
-    nums = [8,3,1,2,4,6,77]
-    print(quickSort(nums))
-    # quickSort(nums)
-
-    sortedNums = quickSort(nums)
-
-    print(findORderedBySplit(sortedNums, 5))
+    # nums = [8,3,1,2,4,6,77]
+    # print(quickSort(nums))
+    # # quickSort(nums)
+    #
+    # sortedNums = quickSort(nums)
+    #
+    # print(findORderedBySplit(sortedNums, 5))

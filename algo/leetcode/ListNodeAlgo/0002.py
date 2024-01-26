@@ -2,8 +2,8 @@
 https://leetcode.cn/problems/add-two-numbers/
 
 """
-from ListNode import ListNode
-import math
+from leetcode.ListNodeKlass import ListNode
+
 
 class Solution:
     def getTrueNumber(self, l3):
