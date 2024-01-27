@@ -16,28 +16,88 @@ def removeNthFromEnd(head, n: int):
             return head.next
         else:
             while temp > 0:
+                print("此时q---- is")
+                q.toString()
+                print("此时pppp is")
+                p.toString()
+                print("\n")
                 p = q
                 q = q.next
                 temp = temp - 1
             p.next = q.next
-        # return
-        return p
+        print("-----------end head is")
+        head.toString()
+        return head
 
-def printL(res):
-    while res:
-        print(res.val)
-        res = res.next
 
 if __name__ == '__main__':
-    l1 = ListNode(1, None)
-    l2 = ListNode(2, l1)
-    l3 = ListNode(3, l2)
-    head = ListNode(4, l3)
+    l1 = ListNode(1)
+    l2 = ListNode(2)
+    l3 = ListNode(3)
+    head = ListNode(4)
 
-    res = removeNthFromEnd(head, 2)
+    head.next = l3
+    l3.next = l2
+    l2.next = l1
+
+    # head.toString()
+    n = 1
+
+    # res = removeNthFromEnd(head, n)
+    # while res:
+    #     print("end ===========> {0}".format(res.val))
+    #     res = res.next
+
+    res = head
+    res.toString()
+    print("\n")
     while res:
         print(res.val)
         res = res.next
+
+    print("\n")
+
+    print(res == None)
+
+    res = head
+    res.toString()
+
+
+    # print(head.toString())
+    #
+    # res2 = removeNthFromEnd(head, 2)
+    # while res2:
+    #     print(res2.val)
+    #     res2 = res2.next
+    # print(res2.toString())
+    #
+    # len, p = 0, head
+    # while p:
+    #     len = len + 1
+    #     p = p.next
+    # if n > len:
+    #     print("sorry but no enough node")
+    # else:
+    #     q = head
+    #     p = head
+    #     temp = len - n
+    #     if temp == 0:
+    #         print("只能噶开头了{0}".format(head.val))
+    #     else:
+    #         while temp > 0:
+    #             p = q
+    #             q = q.next
+    #             temp = temp - 1
+    #         p.next = q.next
+    #     print(head.toString())
+    #
+    # print(head.toString())
+
+
+    # res = removeNthFromEnd(head, 2)
+    # while res:
+    #     print(res.val)
+    #     res = res.next
     # n = 2
     # res = removeNthFromEnd(head, 2)
     # while res:

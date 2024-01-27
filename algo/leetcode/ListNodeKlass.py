@@ -3,6 +3,10 @@ class ListNode:
         self.val = val
         self.next = next_
 
+    def toString(self):
+        while self:
+            print(self.val)
+            self = self.next
 class List2ListNode:
     def getListNode(self, l):
         if len(l) == 0:

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="704cb4c9-05f9-48c7-b0d2-bc27fabf17d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/MyChatBot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/urls.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/SparkApi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/SparkApi_Python.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/api.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/errorList.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyLLM/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algo/leetcode/0002.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algo/leetcode/ListNode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyLLM/MyChatGLM/initializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyLLM/MyLangChain/TestWenxin.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyLLM/MyLangChain/TestWenxin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/leetcode/0001.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/leetcode/0001.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/leetcode/Solution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLLM/.idea/MyLLM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyLLM/.idea/MyLLM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLLM/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MyLLM/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/.idea/algo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/algo/.idea/algo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/algo/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/leetcode/ListNodeAlgo/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/leetcode/ListNodeAlgo/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/leetcode/ListNodeKlass.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/leetcode/ListNodeKlass.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
