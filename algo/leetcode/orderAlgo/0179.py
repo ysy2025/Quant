@@ -45,6 +45,15 @@ def bubble_sort(demo:list):
 第一个字符比,大的在前;
 第一个字符相同的,看第二个字符;(没有第二个的默认第二个是inf.max)
 
+
+两个数字对应的字符串a和b，如果字典序a+b>b+a，此时a排在b的前面即可获得更大值
+示例：a=3,b=32,两者拼接的值：332>323，所以3应排在32前面
+
+作者：追风少年
+链接：https://leetcode.cn/problems/largest-number/solutions/717342/python3-san-chong-fang-fa-qiu-zui-da-shu-cpi4/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 """
 class Solution:
     def compareString(self, listA, listB):
