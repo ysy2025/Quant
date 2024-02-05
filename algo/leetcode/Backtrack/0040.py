@@ -32,13 +32,18 @@ class Solution:
             # 非退出情况
             # 剪枝,加上不允许重复;从start开始遍历,避免生成重复子集
             for i in range(start, len(choices)):
-                # 结束循环条件:子集和超过target
+                # 剪枝1 结束循环条件:子集和超过target
                 print("target is {0} choices is {1} and i is {2}".format(target, choices[i], i))
                 if target - choices[i] < 0:
                     break
+
+                # 剪枝2 如果元素和左边元素相等,说明该搜索分支重复,剪枝
+                if i > target and choices[i] == choices[i-1]:
+                    continue
+
                 # else 可以继续计算;更新target start
                 state.append(choices[i])
-                # 递归选择
+                # 递归选择,进行下一轮选择
                 print("{0}, {1}, {2}, {3}, {4}\n".format(state, target-choices[i], choices[i+1:], start, res))
                 backtrack(state, target-choices[i], choices[i+1:], start, res)
 
@@ -51,7 +56,8 @@ class Solution:
         start = 0  # 遍历起始点
         res = []  # 结果列表（子集列表）
         backtrack(state, target, candidates, start, res)
-        return self.distinct(res)
+        # return self.distinct(res)
+        return res
 
 
 
