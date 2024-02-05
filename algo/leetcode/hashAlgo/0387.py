@@ -45,17 +45,29 @@ class Solution:
         sIndex = self.str2Index(s)
         print(sIndex)
         #
-        # minIndex = math.inf
-        #
-        # for k,v in sDict:
-        #     if v == 1:
-        #         minIndex = min(minIndex, )
+        minIndex = math.inf
 
+        for k,v in sDict.items():
+            if v == 1:
+                index = sIndex[k]
+                minIndex = min(minIndex, index[0])
 
+        return -1 if minIndex == math.inf else minIndex
+
+class Solution2:
+    def firstUniqChar(self, s: str) -> int:
+        dic = {}
+        for c in s:
+            dic[c] = not c in dic
+        print(dic)
+        for i, c in enumerate(s):
+            if dic[c]: return i
+        return -1
 
 if __name__ == '__main__':
-    s = "leetcode"
+    s = "abcde"
 
-    sol = Solution()
-    sol.firstUniqChar(s)
+    sol = Solution2()
+    res = sol.firstUniqChar(s)
+    print(res)
 
