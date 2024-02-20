@@ -55,7 +55,7 @@ class Solution:
         return -1 if minIndex == math.inf else minIndex
 
 class Solution2:
-    def firstUniqChar(self, s: str) -> int:
+    def firstUniqChar(self, s):
         dic = {}
         for c in s:
             dic[c] = not c in dic
