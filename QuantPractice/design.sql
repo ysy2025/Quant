@@ -10,8 +10,7 @@ CREATE TABLE ods_stock_trade_his_full_tbl(
     amount DECIMAL(24,6)    COMMENT '成交额;成交额; 注意单位: 元' ,
     vibration DECIMAL(24,6)    COMMENT '振幅;振幅' ,
     updown DECIMAL(24,6)    COMMENT '涨跌幅;收盘涨跌幅度' ,
-    updown_yuan DECIMAL(24,6)    COMMENT '涨跌额;收盘涨跌,元' ,
-    real_turnover DECIMAL(24,6)    COMMENT '实际换手率;实际换手率=成交量/流动股本' ,
+    updown_yuan DECIMAL(24,6)    COMMENT '涨跌额;收盘涨跌,元'
     PRIMARY KEY (code,pdate)
 )  COMMENT = 'ods_stock_trade_his_full_tbl;akshare-历史行情数据
 这个表统一做前复权,以当前股价为基准，保持当前价格不变，降低前期价格，将复权前的k线下移，以达到图形的匹配，保持股价走势的连续性。
@@ -177,3 +176,10 @@ CREATE TABLE ods_stock_basic_info_full_tbl(
 akshare-股票市场总貌
 每天insert进新的即可.';
 
+https://blog.csdn.net/zhh_920509/article/details/129757516
+python金融数据分析和可视化--03利用Akshare获取股票数据
+以及存mysql
+
+https://zhuanlan.zhihu.com/p/638056122
+下载并可视化
+https://zhuanlan.zhihu.com/p/641150441
