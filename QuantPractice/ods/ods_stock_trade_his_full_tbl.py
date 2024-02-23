@@ -5,6 +5,8 @@ import akshare as ak
 
 import numpy as np
 import pandas as pd
+import sqlalchemy
+
 
 def getTradeHis(code)->pd.DataFrame:
     df = ak.stock_zh_a_hist(symbol=code, period="daily", start_date="19700101", end_date='20500101',
@@ -20,6 +22,10 @@ def getTradeHis(code)->pd.DataFrame:
 
     return df
 
+def connect_db(db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+    return engine
+
 if __name__ == '__main__':
     """
     前复权价格
@@ -33,25 +39,32 @@ if __name__ == '__main__':
     b = pd.DataFrame(a)
     形成如上数据结构
     """
+    # 读取基础数据
     df = pd.read_csv("E:\MyGitHub\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_init.csv",
                      dtype={'code': str})
     codes = df['code'].to_list()
 
-    trade_his = getTradeHis(codes[0])
-    # print("======> code is {0}".format(codes[0]))
-    # print("length of his is {0}".format(len(trade_his)))
+    # 初始化一个空df
+    trade_his = pd.DataFrame()
+
+    # 初始化engine
+    engine = connect_db("ods")
+
     k = 0
-    for code in codes[1:]:
+    for code in codes:
         print("======> code is {0}".format(code))
         sleeptime = random.randint(1, 10)
         time.sleep(sleeptime / 1000)
         k += 1
+        temp = getTradeHis(code)
+        trade_his = pd.concat([trade_his, temp], axis=0)
+        # 每过500个就保存一下
         if k % 500 == 0:
-            # print("======> code is {0}".format(code))
             sleeptime = random.randint(1, 10)
             time.sleep(sleeptime)
-        temp = getTradeHis(code)
-        # print("length of temp is {0}".format(len(temp)))
-        trade_his = pd.concat([trade_his, temp], axis=0)
-        # print("length of his is {0}".format(len(trade_his)))
-    print(len(trade_his))
+            # 保存数据
+            trade_his.to_sql('ods_stock_trade_his_full_tbl', con=engine, if_exists='append', index=False)
+            trade_his=pd.DataFrame()
+
+    # 最后剩下的再存一下
+    trade_his.to_sql('ods_stock_trade_his_full_tbl', con=engine, if_exists='append', index=False)

@@ -172,14 +172,7 @@ CREATE TABLE ods_stock_basic_info_full_tbl(
     city VARCHAR(90)    COMMENT '城市' ,
     board VARCHAR(90)    COMMENT '板块' ,
     PRIMARY KEY (code)
-)  COMMENT = 'ods_stock_basic_info_full_tbl;核心维度表.代码,简称,上市时间,股本,行业.
+)  COMMENT = '股票基础表'
 akshare-股票市场总貌
 每天insert进新的即可.';
 
-https://blog.csdn.net/zhh_920509/article/details/129757516
-python金融数据分析和可视化--03利用Akshare获取股票数据
-以及存mysql
-
-https://zhuanlan.zhihu.com/p/638056122
-下载并可视化
-https://zhuanlan.zhihu.com/p/641150441

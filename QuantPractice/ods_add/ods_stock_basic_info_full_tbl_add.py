@@ -4,6 +4,8 @@ import random
 import akshare as ak
 import pandas as pd
 import numpy as np
+import sqlalchemy
+
 """
 获取沪深上市公司基本情况
 code,代码
@@ -93,12 +95,18 @@ def addShanghai(pdate):
     shanghai_add_res = shanghai_add[["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry", "city"]]
     return shanghai_add_res
 
+def connect_db(db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+    return engine
+
 def mergeDf(shenzhen_df, shanghai_df):
     df = pd.concat([shenzhen_df, shanghai_df], axis=0)
     df = df[["code", "name", "ipo_time", "sum_share", "fluent_share", "industry", "city", "board"]]
     return df
 
 if __name__ == '__main__':
+
+    # 需要初始化pdate;这个应该从mysql里面查询
     pdate="2024-02-20"
     shenzhen_df = addShenzhen(pdate)
     print(shenzhen_df.info())
@@ -106,4 +114,8 @@ if __name__ == '__main__':
     print(shanghai_df.info())
     df = mergeDf(shenzhen_df, shanghai_df)
 
-    df.to_csv("E:\Learning\Git\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_add.csv", index=False) # index 是为了去掉索引
+    # 初始化
+    engine = connect_db("ods")
+
+    # df.to_csv("E:\Learning\Git\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_add.csv", index=False) # index 是为了去掉索引
+    df.to_sql('ods_stock_trade_his_full_tbl', con=engine, if_exists='append', index=False)
