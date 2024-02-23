@@ -5,42 +5,7 @@ import akshare as ak
 import pandas as pd
 import numpy as np
 import sqlalchemy
-
-"""
-获取沪深上市公司基本情况
-code,代码
-name,名称
-industry,所属行业
-area,地区
-pe,市盈率
-outstanding,流通股本(亿)
-totals,总股本(亿)
-totalAssets,总资产(万)
-liquidAssets,流动资产
-fixedAssets,固定资产
-reserved,公积金
-reservedPerShare,每股公积金
-esp,每股收益
-bvps,每股净资
-pb,市净率
-timeToMarket,上市日期
-undp,未分利润
-perundp, 每股未分配
-rev,收入同比(%)
-profit,利润同比(%)
-gpr,毛利率(%)
-npr,净利润率(%)
-holders,股东人数
-
-目前只能拿到
-名称	类型	描述
-A股代码	object	-
-A股简称	object	-
-A股上市日期	object	-
-A股总股本	object	-
-A股流通股本	object	-
-所属行业	object	-
-"""
+from tools import itemGetter
 
 def addShenzhen(pdate):
     # 深证的
@@ -107,15 +72,20 @@ def mergeDf(shenzhen_df, shanghai_df):
 if __name__ == '__main__':
 
     # 需要初始化pdate;这个应该从mysql里面查询
-    pdate="2024-02-20"
+    dateGetter = itemGetter.dateGetter()
+    table = "ods_stock_basic_info_full"
+    column = "ipo_time"
+    pdate= dateGetter.latest(table, column)
+
+    # 然后传入pdate,找到ipo大于pdate的code,拿到
     shenzhen_df = addShenzhen(pdate)
-    print(shenzhen_df.info())
+
     shanghai_df = addShanghai(pdate)
-    print(shanghai_df.info())
+
     df = mergeDf(shenzhen_df, shanghai_df)
 
-    # 初始化
+    # 初始化engine
     engine = connect_db("ods")
 
-    # df.to_csv("E:\Learning\Git\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_add.csv", index=False) # index 是为了去掉索引
-    df.to_sql('ods_stock_trade_his_full_tbl', con=engine, if_exists='append', index=False)
+    # 写入mysql中
+    df.to_sql('ods_stock_basic_info_full_tbl', con=engine, if_exists='append', index=False)
