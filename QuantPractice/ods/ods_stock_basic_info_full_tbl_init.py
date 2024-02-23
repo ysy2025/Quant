@@ -1,3 +1,4 @@
+import os
 import time
 import random
 
@@ -101,4 +102,6 @@ if __name__ == '__main__':
     print(shanghai_df.info())
     df = mergeDf(shenzhen_df, shanghai_df)
 
-    df.to_csv("E:\Learning\Git\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_init.csv", index=False, mode='a') # index 是为了去掉索引;append是追加模式
+    path = os.getcwd()
+    file = path + "\ods_stock_basic_info_full_tbl_init.csv"
+    df.to_csv(file, index=False, mode='a') # index 是为了去掉索引;append是追加模式

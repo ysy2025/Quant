@@ -1,3 +1,4 @@
+import os
 import random
 import time
 
@@ -40,8 +41,9 @@ if __name__ == '__main__':
     形成如上数据结构
     """
     # 读取基础数据
-    df = pd.read_csv("E:\MyGitHub\myPython\QuantPractice\ods\ods_stock_basic_info_full_tbl_init.csv",
-                     dtype={'code': str})
+    path = os.getcwd()
+    file = path + "\ods_stock_basic_info_full_tbl_init.csv"
+    df = pd.read_csv(file, dtype={'code': str})
     codes = df['code'].to_list()
 
     # 初始化一个空df

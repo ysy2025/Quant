@@ -1,3 +1,5 @@
+import os
+
 import akshare as ak
 import requests
 import pandas as pd
@@ -35,5 +37,8 @@ if __name__ == '__main__':
     df = df[["code", "name", "ipo_time","ipo_amount", "ipo_times"]]
     df.head()
 
-    df.to_csv("E:\\MyGitHub\\myPython\\QuantPractice\\ods\\ods_stock_ipo_full_tbl_monthly.csv",index=False)  # index 是为了去掉索引
+    path = os.getcwd()
+    file = path + "\oods_stock_ipo_full_tbl_monthly.csv"
+
+    df.to_csv(file,index=False)  # index 是为了去掉索引
 
