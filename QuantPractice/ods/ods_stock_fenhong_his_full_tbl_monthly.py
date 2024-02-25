@@ -72,5 +72,6 @@ if __name__ == '__main__':
     }
 
     res_df = pd.DataFrame(res)
-
-    res_df.to_csv("E:\\MyGitHub\\myPython\\QuantPractice\\ods\\ods_stock_fenhong_his_full_tbl_monthly.csv",index=False)  # index 是为了去掉索引
+    path = os.getcwd()
+    file = path + "\ods_stock_fenhong_his_full_tbl_monthly.csv"
+    res_df.to_csv(file,index=False)  # index 是为了去掉索引

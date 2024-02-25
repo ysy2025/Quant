@@ -54,23 +54,26 @@ if __name__ == '__main__':
     engine = connect_db("ods")
 
     k = 0
-    for code in codes:
+    a = codes[:500]
+    b = codes[500:1000]
+    c = codes[1000:1500]
+    d = codes[1500:2000]
+    e = codes[2000:2500]
+    f = codes[2500:3000]
+    g = codes[3000:3500]
+    h = codes[3500:4000]
+    i = codes[4000:4500]
+    j = codes[4500:]
+
+    for code in a:
         print("======> code is {0}".format(code))
         sleeptime = random.randint(1, 10)
         time.sleep(sleeptime / 1000)
         k += 1
         temp = getValuationHis(code)
         valuation_his = pd.concat([valuation_his, temp], axis=0)
-        # 每过500个就保存一下
-        if k % 500 == 0:
-            sleeptime = random.randint(1, 10)
-            time.sleep(sleeptime)
-            # 保存数据
-            valuation_his.to_sql('ods_stock_valuation_his_full_tbl', con=engine, if_exists='append', index=False)
-            valuation_his=pd.DataFrame()
-
-    # 最后剩下的再存一下
     valuation_his.to_sql('ods_stock_valuation_his_full_tbl', con=engine, if_exists='append', index=False)
+    valuation_his=pd.DataFrame()
 
     # 更新索引
     dbhelper = DBHelper.DBHelper("ods")

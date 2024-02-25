@@ -29,12 +29,9 @@ if __name__ == '__main__':
     # 读取基础数据;从数据库中读取
     engine = connect_db("ods")
     codes_df = pd.read_sql("select code from ods_stock_basic_info_full_tbl", engine)
-    codes = codes_df.to_list()
+    codes = codes_df["code"].to_list()
     # 初始化一个空df
     business = pd.DataFrame()
-
-    # 初始化engine
-    engine = connect_db("ods")
 
     k = 0
     for code in codes:
