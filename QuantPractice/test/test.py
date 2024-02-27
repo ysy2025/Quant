@@ -1,5 +1,9 @@
 import baostock as bs
 import pandas as pd
+import akshare as ak
+
+df = ak.stock_yjbb_em(date="20230930")
+df.head()
 
 #### 登陆系统 ####
 lg = bs.login()
