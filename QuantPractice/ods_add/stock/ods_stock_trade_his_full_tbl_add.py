@@ -25,8 +25,8 @@ def getTradeHis(code, start_date)->pd.DataFrame:
 
     return df
 
-def connect_db(db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+def connect_db(host, name, pwd, db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 if __name__ == '__main__':
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     trade_his = pd.DataFrame()
 
     # 初始化engine
-    engine = connect_db("ods")
+    engine = connect_db("root", "sun123456", "localhost", "ods")
 
     k = 0
     for code in codes:

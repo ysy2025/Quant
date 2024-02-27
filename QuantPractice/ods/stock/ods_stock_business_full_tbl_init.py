@@ -15,8 +15,8 @@ def getBusiness(code)->pd.DataFrame:
     df.columns = ["code", "main_business", "product_type", "product", "business_area"]
     return df
 
-def connect_db(db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+def connect_db(host, name, pwd, db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 if __name__ == '__main__':
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     限量: 单次返回所有数据
     """
     # 读取基础数据;从数据库中读取
-    engine = connect_db("ods")
+    engine = connect_db("root", "sun123456", "localhost", "ods")
     codes_df = pd.read_sql("select code from ods_stock_basic_info_full_tbl", engine)
     codes = codes_df["code"].to_list()
     # 初始化一个空df

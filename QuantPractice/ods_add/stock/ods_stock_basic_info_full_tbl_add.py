@@ -60,8 +60,8 @@ def addShanghai(pdate):
     shanghai_add_res = shanghai_add[["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry", "city"]]
     return shanghai_add_res
 
-def connect_db(db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+def connect_db(host, name, pwd, db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 def mergeDf(shenzhen_df, shanghai_df):
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     df = mergeDf(shenzhen_df, shanghai_df)
 
     # 初始化engine
-    engine = connect_db("ods")
+    engine = connect_db("root", "sun123456", "localhost", "ods")
 
     # 写入mysql中
     df.to_sql('ods_stock_basic_info_full_tbl', con=engine, if_exists='append', index=False)

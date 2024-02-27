@@ -5,6 +5,9 @@ import time
 import akshare as ak
 import pandas as pd
 
+from tools import itemGetter
+
+
 def func(money):
     if money == "--":
         return 0
@@ -44,11 +47,8 @@ if __name__ == '__main__':
     b = pd.DataFrame(a)
     形成如上数据结构
     """
-    path = os.getcwd()
-    file = path + "\ods_stock_basic_info_full_tbl_init.csv"
-
-    df = pd.read_csv(file, dtype={'code': str})
-    codes = df['code'].to_list()
+    codeGetter = itemGetter.codeGetter()
+    codes = codeGetter.codes()
 
     dividend = []
     dividend_times = []

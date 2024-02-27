@@ -2,7 +2,7 @@ import random
 import time
 import pandas as pd
 import sqlalchemy
-from tools import DBHelper
+from tools import DBHelper, itemGetter
 import baostock as bs
 
 def getValuationHis(code)->pd.DataFrame:
@@ -55,8 +55,8 @@ def getValuationHis(code)->pd.DataFrame:
     except:
         return pd.DataFrame()
 
-def connect_db(db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
+def connect_db(host, name, pwd, db):
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 def func(a):
@@ -73,8 +73,10 @@ if __name__ == '__main__':
     print('login respond  error_msg:' + lg.error_msg)
 
     # 读取基础数据;从数据库中读取
-    engine = connect_db("ods")
-    codes_df = pd.read_sql("select code from ods_stock_basic_info_full_tbl", engine)
+    engine = connect_db("root", "sun123456", "localhost", "ods")
+
+    codeGetter = itemGetter.codeGetter()
+    codes_df = codeGetter.codes()
 
     # 针对code进行处理.baostock中需要调整code.
     codes_df['city'] = codes_df["code"].apply(lambda x: "sh." if x.startswith("6") else "sz.")
@@ -84,8 +86,6 @@ if __name__ == '__main__':
     # 初始化一个空df
     valuation_his = pd.DataFrame()
 
-    # 初始化engine
-    engine = connect_db("ods")
     # print(codes[2999:3002])
     k = 0
     for code in codes:
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     valuation_his.to_sql('ods_stock_valuation_his_full_tbl', con=engine, if_exists='append', index=False)
 
     # 更新索引
-    dbhelper = DBHelper.DBHelperDBHelper.DBHelper('127.0.0.1', "root", "sun123456", "ods")
+    dbhelper = DBHelper.DBHelper('127.0.0.1', "root", "sun123456", "ods")
     drop_index = "alter table ods_stock_valuation_his_full_tbl drop index value_code;"
     add_index = "alter table ods_stock_valuation_his_full_tbl add index value_code (code) ;"
 
