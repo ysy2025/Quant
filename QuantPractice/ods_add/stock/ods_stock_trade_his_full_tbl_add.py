@@ -67,7 +67,7 @@ if __name__ == '__main__':
     trade_his.to_sql('ods_stock_trade_his_full_tbl', con=engine, if_exists='append', index=False)
 
     # 更新索引
-    dbhelper = DBHelper.DBHelper("ods")
+    dbhelper = DBHelper.DBHelper('127.0.0.1', "root", "sun123456", "ods")
     drop_index = "alter table ods_stock_trade_his_full_tbl drop index stock_code;"
     add_index = "alter table ods_stock_trade_his_full_tbl add index stock_code (code) ;"
 

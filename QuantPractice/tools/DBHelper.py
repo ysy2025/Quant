@@ -6,7 +6,7 @@ https://blog.csdn.net/liu_sir1009/article/details/128009134
 """
 class DBHelper(object):
 
-    def __init__(self, database):
+    def __init__(self, host, user, password, database):
         # TODO 此处配置，可以去配置文件中读取。
         self.pool = PooledDB(
             creator=pymysql,  # 使用链接数据库的模块

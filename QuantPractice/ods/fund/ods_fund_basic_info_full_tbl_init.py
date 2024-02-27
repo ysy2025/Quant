@@ -1,10 +1,6 @@
-import random
-import time
 import akshare as ak
-import pandas as pd
-import os
 import sqlalchemy
-from tools import DBHelper
+
 
 def connect_db(db):
     engine = sqlalchemy.create_engine('mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(db))
