@@ -290,3 +290,31 @@ ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables opt
 连接MySQL时报错：Public Key Retrieval is not allowed的解决方法
 https://www.jianshu.com/p/928eb43d0073
 
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.cnblogs.com/wushujun/p/11691027.html
+
+python模块安装问题：no matching distribution found for XXX 或者 Read timed out.
+https://blog.csdn.net/zhang_han666/article/details/88286010
+
+
+
+
+
+看了很多解决问题的博客，亲测通过更换国内安装源和设置超时时间可以解决。
+在pip install XXX命令的后面加上
+--default-timeout=100 -i https://pypi.tuna.tsinghua.edu.cn/simple即可。
+
+
+
+pip install robotframework-httplibrary   --default-timeout=100 -i https://pypi.tuna.tsinghua.edu.cn/simple
