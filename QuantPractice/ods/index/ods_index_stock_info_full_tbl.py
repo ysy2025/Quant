@@ -2,7 +2,7 @@ import akshare as ak
 import sqlalchemy
 
 def connect_db(host, name, pwd, db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 if __name__ == '__main__':

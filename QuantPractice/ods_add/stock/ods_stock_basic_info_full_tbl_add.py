@@ -61,7 +61,7 @@ def addShanghai(pdate):
     return shanghai_add_res
 
 def connect_db(host, name, pwd, db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
+    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
     return engine
 
 def mergeDf(shenzhen_df, shanghai_df):
