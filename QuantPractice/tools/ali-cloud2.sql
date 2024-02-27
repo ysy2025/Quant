@@ -10,3 +10,7 @@ https://developer.aliyun.com/article/1439083?spm=a2c6h.14164896.0.0.227547c5aeoy
 
 https://pillow.readthedocs.io/en/latest/installation.html
 
+
+
+其他一些问题记录
+https://www.cnblogs.com/treemountain/p/12504582.html
