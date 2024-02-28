@@ -6,6 +6,7 @@ iZ0jlhdmqu2usznfqs6lnvZ
 华北6（乌兰察布）
 2024年2月27日 12:41:00
 39.101.76.35
+USTC!
 
 
 阿里云提供的Python版本单一，如需要其他版本的Python，可按照如下步骤来更换。
@@ -46,11 +47,25 @@ make install
 mv /usr/bin/python /usr/bin/python_old2
 　　
 7、再建立新版本python的链接
-ln -s /usr/local/python3/bin/python3 /usr/bin/python
+ln -s /usr/local/python3.8/bin/python3.8 /usr/bin/python3
+
+
+ln -s /usr/bin/python2 /usr/bin/python_old
+
+
+mv /usr/bin/python /usr/bin/python_old2
 　　
+7、再建立新版本python的链接
+ln -s /usr/local/python3/bin/python3 /usr/bin/python
+
+ln -s /usr/local/python3.8/bin/pip3.8 /usr/bin/pip
+
+　
 8、这个时候输入
 python -V
 
+注意配置环境变量
+https://www.jianshu.com/p/6ec123426787
 　
 10、就会显示出python的新版本信息
 

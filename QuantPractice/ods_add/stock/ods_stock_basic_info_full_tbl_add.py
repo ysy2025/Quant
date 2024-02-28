@@ -12,6 +12,7 @@ from tools import itemGetter
 def addShenzhen(pdate):
     # 深证的列表
     shenzhen_df = ak.stock_info_sz_name_code("A股列表")
+    shenzhen_df = shenzhen_df[['板块', 'A股代码', 'A股简称', 'A股上市日期', 'A股总股本', 'A股流通股本', '所属行业']]
     #对列进行处理
     shenzhen_df.columns = ["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry"]
     shenzhen_df["fluent_share"] = shenzhen_df["fluent_share"].apply(lambda x: x.replace(",", '')).astype(float)
