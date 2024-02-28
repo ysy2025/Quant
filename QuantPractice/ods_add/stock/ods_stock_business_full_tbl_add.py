@@ -8,16 +8,14 @@ import numpy as np
 import pandas as pd
 import sqlalchemy
 
+from tools import itemGetter
+
 
 def getBusiness(code)->pd.DataFrame:
     df = ak.stock_zyjs_ths(symbol=code)
     # columns 重命名
     df.columns = ["code", "main_business", "product_type", "product", "business_area"]
     return df
-
-def connect_db(host, name, pwd, db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
-    return engine
 
 if __name__ == '__main__':
     """
@@ -27,7 +25,7 @@ if __name__ == '__main__':
     限量: 单次返回所有数据
     """
     # 读取基础数据;从数据库中读取;直接查询增量即可
-    engine = connect_db("root", "sun123456", "localhost", "ods")
+    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
     codes_df = pd.read_sql("select code from ods_stock_basic_info_full_tbl where ipo_time > {0}".format(pdate), engine)
     codes = codes_df.to_list()
     # 初始化一个空df

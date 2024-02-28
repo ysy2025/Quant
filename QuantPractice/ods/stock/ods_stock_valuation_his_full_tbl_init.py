@@ -55,10 +55,6 @@ def getValuationHis(code)->pd.DataFrame:
     except:
         return pd.DataFrame()
 
-def connect_db(host, name, pwd, db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
-    return engine
-
 def func(a):
     if a == "":
         return 0
@@ -73,7 +69,7 @@ if __name__ == '__main__':
     print('login respond  error_msg:' + lg.error_msg)
 
     # 读取基础数据;从数据库中读取
-    engine = connect_db("root", "sun123456", "localhost", "ods")
+    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
 
     codeGetter = itemGetter.codeGetter("root", "sun123456", "localhost")
     codes_df = codeGetter.codes()

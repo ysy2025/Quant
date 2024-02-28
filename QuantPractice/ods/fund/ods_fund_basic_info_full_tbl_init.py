@@ -1,14 +1,12 @@
 import akshare as ak
 import sqlalchemy
 
+from tools import itemGetter
 
-def connect_db(host, name, pwd, db):
-    engine = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
-    return engine
 
 if __name__ == '__main__':
     # 初始化引擎
-    engine = connect_db("root", "sun123456", "localhost", "ods")
+    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
 
     df = ak.fund_name_em()
     df.columns = ["code", "abbr_name", "name", "type", "full_name"]
