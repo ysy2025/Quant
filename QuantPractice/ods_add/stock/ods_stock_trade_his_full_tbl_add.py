@@ -32,11 +32,11 @@ def connect_db(host, name, pwd, db):
 if __name__ == '__main__':
 
     # 需要拿到code列表
-    codeGetter = itemGetter.codeGetter()
+    codeGetter = itemGetter.codeGetter("root", "Alicloud123456!", "39.101.76.35")
     codes = codeGetter.codes()
 
     # 需要初始化date;这个应该从mysql里面查询;用贵州茅台做索引,去查
-    dateGetter = itemGetter.dateGetter()
+    dateGetter = itemGetter.dateGetter("root", "Alicloud123456!", "39.101.76.35")
     table = "ods_stock_trade_his_full_tbl"
     column = "date"
     date= dateGetter.latest_of_trade(table, column)

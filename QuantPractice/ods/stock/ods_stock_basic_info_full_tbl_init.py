@@ -43,7 +43,7 @@ A股流通股本	object	-
 
 def getShenzhen():
     # 深证的
-    shenzhen_df = ak.stock_info_sz_name_code(symbol="A股列表")
+    shenzhen_df = ak.stock_info_sz_name_code("A股列表")
     shenzhen_df.columns = ["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry"]
     shenzhen_df["fluent_share"] = shenzhen_df["fluent_share"].apply(lambda x: x.replace(",", '')).astype(float)
     shenzhen_df["sum_share"] = shenzhen_df["sum_share"].apply(lambda x: x.replace(",", '')).astype(float)
@@ -56,8 +56,8 @@ def getShenzhen():
 
 def getShanghai():
     # 上证的,主板和科创板分开
-    shanghai_main_df = ak.stock_info_sh_name_code(symbol="主板A股")
-    shanghai_kc_df = ak.stock_info_sh_name_code(symbol="科创板")
+    shanghai_main_df = ak.stock_info_sh_name_code("主板A股")
+    shanghai_kc_df = ak.stock_info_sh_name_code("科创板")
     shanghai_main_df["板块"] = ["主板" for i in range(len(shanghai_main_df))]
     shanghai_kc_df["板块"] = ["科创板" for i in range(len(shanghai_kc_df))]
 

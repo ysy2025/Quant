@@ -1,43 +1,42 @@
-import time
 import random
+import time
 
 import akshare as ak
 import pandas as pd
-import numpy as np
 import sqlalchemy
+import sys
+
+sys.path.append("E:\\MyGitHub\\myPython\\QuantPractice\\tools")
 from tools import itemGetter
 
 def addShenzhen(pdate):
-    # 深证的
-    shenzhen_df = ak.stock_info_sz_name_code(symbol="A股列表")
+    # 深证的列表
+    shenzhen_df = ak.stock_info_sz_name_code("A股列表")
+    #对列进行处理
     shenzhen_df.columns = ["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry"]
     shenzhen_df["fluent_share"] = shenzhen_df["fluent_share"].apply(lambda x: x.replace(",", '')).astype(float)
     shenzhen_df["sum_share"] = shenzhen_df["sum_share"].apply(lambda x: x.replace(",", '')).astype(float)
     shenzhen_df["sum_share"] = shenzhen_df["sum_share"] / 100000000
     shenzhen_df["fluent_share"] = shenzhen_df["fluent_share"] / 100000000
-
     shenzhen_df["industry"] = shenzhen_df["industry"].apply(lambda x: x[2:])
     shenzhen_df["city"] = ["深圳" for i in range(len(shenzhen_df))]
-
+    #过滤
     shenzhen_add = shenzhen_df[shenzhen_df["ipo_time"]>pdate]
     return shenzhen_add
 
 def addShanghai(pdate):
     # 上证的,主板和科创板分开
-    shanghai_main_df = ak.stock_info_sh_name_code(symbol="主板A股")
-    shanghai_kc_df = ak.stock_info_sh_name_code(symbol="科创板")
+    shanghai_main_df = ak.stock_info_sh_name_code("主板A股")
+    shanghai_kc_df = ak.stock_info_sh_name_code("科创板")
     shanghai_main_df["板块"] = ["主板" for i in range(len(shanghai_main_df))]
     shanghai_kc_df["板块"] = ["科创板" for i in range(len(shanghai_kc_df))]
-
     # 拼接
     shanghai_df = pd.concat([shanghai_main_df, shanghai_kc_df], axis=0)
-
+    # 处理列
     shanghai_df.columns = ["code", "name", "full_name", "ipo_time", "board"]
     shanghai_df["city"] = ["上海" for i in range(len(shanghai_df))]
-
     # 上证的总股本,行业,需要通过东方财富的接口拿;历史的不用了,需要获取新的
     shanghai_add = shanghai_df[shanghai_df["ipo_time"]>pdate]
-
     shanghai_stocks = list(shanghai_add["code"])
     shanghai_sum_share = []
     shanghai_fluent_share = []
@@ -49,14 +48,13 @@ def addShanghai(pdate):
         shanghai_industry.append(temp["value"][2])
         shanghai_sum_share.append(temp["value"][6])
         shanghai_fluent_share.append(temp["value"][7])
-
     # 拿到之后拼接处理
     shanghai_add["industry"] = shanghai_industry
     shanghai_add["sum_share"] = shanghai_sum_share
     shanghai_add["fluent_share"] = shanghai_fluent_share
     shanghai_add["sum_share"] = shanghai_add["sum_share"] / 100000000
     shanghai_add["fluent_share"] = shanghai_add["fluent_share"] / 100000000
-
+    # 重新排列
     shanghai_add_res = shanghai_add[["board", "code", "name", "ipo_time", "sum_share", "fluent_share", "industry", "city"]]
     return shanghai_add_res
 
@@ -72,8 +70,8 @@ def mergeDf(shenzhen_df, shanghai_df):
 if __name__ == '__main__':
 
     # 需要初始化pdate;这个应该从mysql里面查询
-    dateGetter = itemGetter.dateGetter()
-    table = "ods_stock_basic_info_full"
+    dateGetter = itemGetter.dateGetter("root", "Alicloud123456!", "39.101.76.35")
+    table = "ods_stock_basic_info_full_tbl"
     column = "ipo_time"
     pdate= dateGetter.latest(table, column)
 

@@ -47,7 +47,7 @@ if __name__ == '__main__':
     b = pd.DataFrame(a)
     形成如上数据结构
     """
-    codeGetter = itemGetter.codeGetter()
+    codeGetter = itemGetter.codeGetter("root", "Alicloud123456!", "39.101.76.35")
     codes = codeGetter.codes()
 
     dividend = []

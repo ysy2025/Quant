@@ -13,10 +13,13 @@ class dateGetter:
     用来获取指定日期
     """
 
-    def __init__(self, db="ods"):
+    def __init__(self, user, pwd, host, db="ods"):
+        self.user = user
+        self.pwd = pwd
+        self.host = host
         self.db = db
         self.engine = sqlalchemy.create_engine(
-            'mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(self.db))
+            'mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(self.user, self.pwd, self.host, self.db))
 
     def latest(self, table, column):
         sql = "select max({1}) as a from {0}".format(table, column)
@@ -44,10 +47,13 @@ class codeGetter:
     用来获取指定日期
     """
 
-    def __init__(self, db="ods"):
+    def __init__(self, user, pwd, host, db="ods"):
+        self.user = user
+        self.pwd = pwd
+        self.host = host
         self.db = db
         self.engine = sqlalchemy.create_engine(
-            'mysql+pymysql://root:sun123456@localhost:3306/{}?charset=utf8'.format(self.db))
+            'mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(self.user, self.pwd, self.host, self.db))
 
     def codes(self):
         sql = "select code from ods.ods_stock_basic_info_full_tbl"

@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # 读取基础数据;从数据库中读取
     engine = connect_db("root", "sun123456", "localhost", "ods")
 
-    codeGetter = itemGetter.codeGetter()
+    codeGetter = itemGetter.codeGetter("root", "Alicloud123456!", "39.101.76.35")
     codes_df = codeGetter.codes()
 
     # 针对code进行处理.baostock中需要调整code.
