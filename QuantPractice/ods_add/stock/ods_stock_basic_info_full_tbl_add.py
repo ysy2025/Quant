@@ -7,7 +7,7 @@ import sqlalchemy
 import sys
 
 sys.path.append("E:\\MyGitHub\\myPython\\QuantPractice\\tools")
-from tools import itemGetter
+from tools import itemGetter, DBHelper
 
 def addShenzhen(pdate):
     # 深证的列表
@@ -36,6 +36,8 @@ def addShanghai(pdate):
     # 处理列
     shanghai_df.columns = ["code", "name", "full_name", "ipo_time", "board"]
     shanghai_df["city"] = ["上海" for i in range(len(shanghai_df))]
+    shanghai_df["ipo_time"] = shanghai_df["ipo_time"].astype(str)
+
     # 上证的总股本,行业,需要通过东方财富的接口拿;历史的不用了,需要获取新的
     shanghai_add = shanghai_df[shanghai_df["ipo_time"]>pdate]
     shanghai_stocks = list(shanghai_add["code"])
@@ -71,7 +73,7 @@ def mergeDf(shenzhen_df, shanghai_df):
 if __name__ == '__main__':
 
     # 需要初始化pdate;这个应该从mysql里面查询
-    dateGetter = itemGetter.dateGetter("root", "Alicloud123456!", "39.101.76.35")
+    dateGetter = itemGetter.codeGetter("root", "sun123456", "localhost")
     table = "ods_stock_basic_info_full_tbl"
     column = "ipo_time"
     pdate= dateGetter.latest(table, column)

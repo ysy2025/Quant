@@ -43,7 +43,7 @@ if __name__ == '__main__':
     形成如上数据结构
     """
     # 读取基础数据
-    codeGetter = itemGetter.codeGetter("root", "Alicloud123456!", "39.101.76.35")
+    codeGetter = itemGetter.codeGetter("root", "sun123456", "localhost")
     codes = codeGetter.codes()
 
     # 初始化一个空df

@@ -66,6 +66,7 @@ def getShanghai():
 
     shanghai_df.columns = ["code", "name", "full_name", "ipo_time", "board"]
     shanghai_df["city"] = ["上海" for i in range(len(shanghai_df))]
+    shanghai_df["ipo_time"] = shanghai_df["ipo_time"].astype(str)
 
     # 上证的总股本,行业,需要通过东方财富的接口拿
     shanghai_stocks = list(shanghai_df["code"])

@@ -3,7 +3,7 @@ import os
 import sqlalchemy
 
 def ali_connect_db():
-    engine = sqlalchemy.create_engine('mysql+pymysql://root:Alicloud123456!@39.101.76.35:3306/ods?charset=utf8')
+    engine = 1
     return engine
 
 
