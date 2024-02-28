@@ -116,11 +116,18 @@ if __name__ == '__main__':
 
     # 更新索引
     dbhelper = DBHelper.DBHelper('127.0.0.1', "root", "sun123456", "ods")
+
     drop_index = "alter table ods_stock_valuation_his_full_tbl drop index value_code;"
     add_index = "alter table ods_stock_valuation_his_full_tbl add index value_code (code) ;"
 
+    drop_index2 = "alter table ods_stock_valuation_his_full_tbl drop index value_cdate;"
+    add_index2 = "alter table ods_stock_valuation_his_full_tbl add index value_date (date) ;"
+
     dbhelper.exec(drop_index)
     dbhelper.exec(add_index)
+
+    dbhelper.exec(drop_index2)
+    dbhelper.exec(add_index2)
 
     #### 登出 baostock 系统 ####
     bs.logout()

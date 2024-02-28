@@ -15,12 +15,12 @@ def getTradeHis(code, start_date)->pd.DataFrame:
     df = ak.stock_zh_a_hist(symbol=code, period="daily", start_date="19700101", end_date='20500101',
                                             adjust="qfq")
     # columns 重命名
-    df.columns = ["pdate", "open", "close", "highest", "lowest", "volume", "amount",
+    df.columns = ["date", "open", "close", "highest", "lowest", "volume", "amount",
                   "vibration", "updown", "updown_yuan", "turnover"]
     # 增加一列
     df["code"] = [code for i in range(len(df))]
     # 重置df
-    df = df[["code", "pdate", "open", "close", "highest", "lowest", "volume", "amount", "vibration", "updown",
+    df = df[["code", "date", "open", "close", "highest", "lowest", "volume", "amount", "vibration", "updown",
                  "updown_yuan"]]
 
     return df
@@ -35,11 +35,11 @@ if __name__ == '__main__':
     codeGetter = itemGetter.codeGetter()
     codes = codeGetter.codes()
 
-    # 需要初始化pdate;这个应该从mysql里面查询;用贵州茅台做索引,去查
+    # 需要初始化date;这个应该从mysql里面查询;用贵州茅台做索引,去查
     dateGetter = itemGetter.dateGetter()
     table = "ods_stock_trade_his_full_tbl"
-    column = "pdate"
-    pdate= dateGetter.latest_of_trade(table, column)
+    column = "date"
+    date= dateGetter.latest_of_trade(table, column)
 
     # 初始化一个空df
     trade_his = pd.DataFrame()
@@ -53,7 +53,7 @@ if __name__ == '__main__':
         sleeptime = random.randint(1, 10)
         time.sleep(sleeptime / 1000)
         k += 1
-        temp = getTradeHis(code, pdate)
+        temp = getTradeHis(code, date)
         trade_his = pd.concat([trade_his, temp], axis=0)
         # 每过500个就保存一下
         if k % 500 == 0:
@@ -71,5 +71,11 @@ if __name__ == '__main__':
     drop_index = "alter table ods_stock_trade_his_full_tbl drop index stock_code;"
     add_index = "alter table ods_stock_trade_his_full_tbl add index stock_code (code) ;"
 
+    drop_index2 = "alter table ods_stock_trade_his_full_tbl drop index stock_date;"
+    add_index2 = "alter table ods_stock_trade_his_full_tbl add index stock_date (date) ;"
+
     dbhelper.exec(drop_index)
     dbhelper.exec(add_index)
+
+    dbhelper.exec(drop_index2)
+    dbhelper.exec(add_index2)

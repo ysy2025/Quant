@@ -15,12 +15,12 @@ def getTradeHis(code)->pd.DataFrame:
     df = ak.stock_zh_a_hist(symbol=code, period="daily", start_date="19700101", end_date='20500101',
                                             adjust="qfq")
     # columns 重命名
-    df.columns = ["pdate", "open", "close", "highest", "lowest", "volume", "amount",
+    df.columns = ["date", "open", "close", "highest", "lowest", "volume", "amount",
                   "vibration", "updown", "updown_yuan", "turnover"]
     # 增加一列
     df["code"] = [code for i in range(len(df))]
     # 重置df
-    df = df[["code", "pdate", "open", "close", "highest", "lowest", "volume", "amount", "vibration", "updown",
+    df = df[["code", "date", "open", "close", "highest", "lowest", "volume", "amount", "vibration", "updown",
                  "updown_yuan"]]
 
     return df
