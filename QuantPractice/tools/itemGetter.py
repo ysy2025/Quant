@@ -63,7 +63,7 @@ class codeGetter:
         return res['code'].to_list()
 
 class conGetter:
-    def connect_db(host, name: object, pwd: object, db: object) -> object:
+    def connect_db(name, pwd, host, db) -> object:
         engine = sqlalchemy.create_engine(
             'mysql+pymysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(name, pwd, host, db))
         return engine

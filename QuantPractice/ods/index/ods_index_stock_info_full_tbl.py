@@ -5,7 +5,7 @@ from tools import itemGetter
 
 if __name__ == '__main__':
     # 初始化引擎
-    engine = itemGetter.conGetter.connect_db("localhost", "root", "Alicloud123456!", "ods")
+    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
 
     df = ak.index_stock_info()
     df.columns = ["index_code", "display_name", "publish_date"]

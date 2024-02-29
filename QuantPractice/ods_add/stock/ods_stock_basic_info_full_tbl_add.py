@@ -100,7 +100,7 @@ if __name__ == '__main__':
     dbhelper.exec(drop_bigger)
     print("=" * 32 + ">" + "删除成功\n")
     # 初始化engine
-    engine = itemGetter.conGetter.connect_db("localhost", "root", "Alicloud123456!", "ods")
+    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
     # 写入mysql中
     df.to_sql('ods_stock_basic_info_full_tbl', con=engine, if_exists='append', index=False)
     print("! 恭喜更新成功\n")
