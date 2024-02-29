@@ -1,4 +1,4 @@
-import os
+import os, sys
 import random
 import time
 
@@ -7,7 +7,8 @@ import akshare as ak
 import numpy as np
 import pandas as pd
 import sqlalchemy
-
+sys.path.append("E:\\MyGitHub\\myPython\\QuantPractice\\tools")
+sys.path.append("/code")
 from tools import itemGetter
 
 
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     描述: 同花顺-主营介绍
     限量: 单次返回所有数据
     """
-    # 读取基础数据;从数据库中读取;直接查询增量即可
+    # 读取基础数据;从数据库中读取;直接查询增量即可;由于basic_info更新在前,因此需要拿到最新更新的
     engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
     codes_df = pd.read_sql("select code from ods_stock_basic_info_full_tbl where ipo_time > {0}".format(pdate), engine)
     codes = codes_df.to_list()
