@@ -1,3 +1,5 @@
+#coding=utf-8
+import datetime
 import random
 import time
 
@@ -78,29 +80,32 @@ def mergeDf(shenzhen_df, shanghai_df):
     return df
 
 if __name__ == '__main__':
-    # 需要初始化pdate;这个应该从mysql里面查询
-    dateGetter = itemGetter.dateGetter("root", "Alicloud123456!", "localhost")
-    table = "ods_stock_basic_info_full_tbl"
-    column = "ipo_time"
-    pdate = dateGetter.latest(table, column)
-    print("=" *32 + ">" + "初始化完成\n")
+    if datetime.datetime.now().weekday() > 4:
+        print("-" * 32 + "> 周末啦,不开工!")
+    else:
+        # 需要初始化pdate;这个应该从mysql里面查询
+        dateGetter = itemGetter.dateGetter("root", "Alicloud123456!", "localhost")
+        table = "ods_stock_basic_info_full_tbl"
+        column = "ipo_time"
+        pdate = dateGetter.latest(table, column)
+        print("=" *32 + ">" + "初始化完成\n")
 
-    # 然后传入pdate,找到ipo大于pdate的code,拿到
-    shenzhen_df = addShenzhen(pdate)
-    print("=" * 32 + ">" + "深圳数据完成\n")
+        # 然后传入pdate,找到ipo大于pdate的code,拿到
+        shenzhen_df = addShenzhen(pdate)
+        print("=" * 32 + ">" + "深圳数据完成\n")
 
-    shanghai_df = addShanghai(pdate)
-    print("=" * 32 + ">" + "上海数据完成\n")
+        shanghai_df = addShanghai(pdate)
+        print("=" * 32 + ">" + "上海数据完成\n")
 
-    df = mergeDf(shenzhen_df, shanghai_df)
-    print("=" * 32 + ">" + "合并完成\n")
-    # 首先删除大于pdate的
-    dbhelper = DBHelper.DBHelper('localhost', "root", "Alicloud123456!", "ods")
-    drop_bigger = "delete from ods_stock_basic_info_full_tbl where ipo_time > '{0}'".format(pdate)
-    dbhelper.exec(drop_bigger)
-    print("=" * 32 + ">" + "删除成功\n")
-    # 初始化engine
-    engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
-    # 写入mysql中
-    df.to_sql('ods_stock_basic_info_full_tbl', con=engine, if_exists='append', index=False)
-    print("! 恭喜更新成功\n")
+        df = mergeDf(shenzhen_df, shanghai_df)
+        print("=" * 32 + ">" + "合并完成\n")
+        # 首先删除大于pdate的
+        dbhelper = DBHelper.DBHelper('localhost', "root", "Alicloud123456!", "ods")
+        drop_bigger = "delete from ods_stock_basic_info_full_tbl where ipo_time > '{0}'".format(pdate)
+        dbhelper.exec(drop_bigger)
+        print("=" * 32 + ">" + "删除成功\n")
+        # 初始化engine
+        engine = itemGetter.conGetter.connect_db("root", "sun123456", "localhost", "ods")
+        # 写入mysql中
+        df.to_sql('ods_stock_basic_info_full_tbl', con=engine, if_exists='append', index=False)
+        print("! 恭喜更新成功\n")
